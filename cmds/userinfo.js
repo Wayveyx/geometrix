@@ -10,7 +10,7 @@ exports.run = async (bot, message, args, gjp, url) => {
     if (!isNaN(args[0])) {
         axios.post(`${url}/getGJUserInfo20.php`, `gameVersion=20&binaryVersion=29&accountID=30&gjp=${gjp}&targetAccountID=${args[0]}&secret=Wmfd2893gb7`)
             .then(function (res) {
-                console.log(res);
+                //console.log(res);
                 if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
                     .setTitle("Error")
                     .setColor("#FF1800")
