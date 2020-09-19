@@ -18,7 +18,7 @@ exports.run = async (bot, message, args, gjp, url) => {
     } else {
         axios.post(`${url}/getGJUsers20.php`, `gameVersion=20&binaryVersion=29&str=${args[0]}&total=${gjp}&page=0&secret=Wmfd2893gb7`)
             .then(function (res) {                                                                           //LOL i used total for this so it would know the requester is the bot, and yes i modified the file.
-                console.log(res);
+                //console.log(res);
                 let args2 = res.data.replace("#", ":").split(":");
                 message.channel.send(new Discord.MessageEmbed()
                     .setTitle("User Information")
