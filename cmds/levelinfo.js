@@ -11,7 +11,7 @@ exports.run = async (bot, message, args, gjp, url) => {
         .setDescription("This might take a moment."));
     axios.post(`${url}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args[0]}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
         .then(function (res) {
-            console.log(res.data);
+            //console.log(res.data);
             if (res.data.includes("-1")) return msg.edit(new Discord.MessageEmbed()
                 .setTitle("Error")
                 .setColor("#FF1800")
