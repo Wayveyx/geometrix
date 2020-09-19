@@ -19,7 +19,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                 msg.edit(new Discord.MessageEmbed()
                     .setTitle("User Information")
                     .setDescription(`Username: ${args2[1]}\nID: ${args2[3]}`)
-                    .setColor("#FFA500")
+                    .setColor("#01FF56")
                     .addField("Stats", `Stars: ${args2[13]}\nCoins: ${args2[5]}\nUser Coins: ${args2[7]}\nDemons: ${args2[17]}\nCreator Points: ${args2[19]}`)
                 );
             })
@@ -35,7 +35,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                 msg.edit(new Discord.MessageEmbed()
                     .setTitle("User Information")
                     .setDescription(`Username: ${args2[1]}\nID: ${args2[3]}`)
-                    .setColor("#FFA500")
+                    .setColor("#01FF56")
                     .addField("Stats", `Stars: ${args2[21]}\nCoins: ${args2[5]}\nUser Coins: ${args2[7]}\nDemons: ${args2[25]}\nCreator Points: ${args2[23]}`)
                 );
             })
