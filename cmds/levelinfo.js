@@ -12,11 +12,11 @@ exports.run = async (bot, message, args, gjp, url) => {
     axios.post(`${url}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args[0]}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
         .then(function (res) {
             //console.log(res.data);
-            if (res.data.includes("-1")) return msg.edit(new Discord.MessageEmbed()
+            let args2 = res.data.split(":");
+            if (args2[2].includes("-1")) return msg.edit(new Discord.MessageEmbed()
                 .setTitle("Error")
                 .setColor("#FF1800")
                 .setDescription(`There is no level with ID ${args[0]}.`));
-            let args2 = res.data.split(":");
             let args3 = res.data.split("~|~");
             let songid = args2[15];
             let song = args3[1];
