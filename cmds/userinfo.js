@@ -30,7 +30,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                 if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
                     .setTitle("Error")
                     .setColor("#FF1800")
-                    .setDescription(`There is no user with username ${args[0]}.`));
+                    .setDescription(`There is no user with the username ${args[0]}.`));
                 let args2 = res.data.replace("#", ":").split(":");
                 msg.edit(new Discord.MessageEmbed()
                     .setTitle("User Information")
