@@ -5,7 +5,7 @@ const base64 = require("base-64");
 exports.run = async (bot, message, args, gjp, url) => {
     if (args[0] == undefined) return message.channel.send("Please provide a level ID.");
     if (isNaN(args[0])) return message.channel.send("Please provide a level ID.");
-    let msg = await message.channel.send(new Discord.MessageEmbed()
+    let msg = await message.channel.send(new Discord.RichEmbed()
         .setTitle("Getting level info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
@@ -13,7 +13,7 @@ exports.run = async (bot, message, args, gjp, url) => {
         .then(function (res) {
             //console.log(res.data);
             let args2 = res.data.split(":");
-            if (args2[2].includes("-1")) return msg.edit(new Discord.MessageEmbed()
+            if (args2[2].includes("-1")) return msg.edit(new Discord.RichEmbed()
                 .setTitle("Error")
                 .setColor("#FF1800")
                 .setDescription(`There is no level with ID ${args[0]}.`));
@@ -114,7 +114,7 @@ exports.run = async (bot, message, args, gjp, url) => {
             if (!args2[55] == "0") {
                 copyable = args2[55].slice(1); //modified getGJLevels.php to return with the levels pass
             }
-            msg.edit(new Discord.MessageEmbed()
+            msg.edit(new Discord.RichEmbed()
                 .setTitle(args2[3])
                 .setColor("#01FF56")
                 .setDescription(`${base64.decode(args2[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
