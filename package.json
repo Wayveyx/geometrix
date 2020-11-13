@@ -7,8 +7,6 @@
     "name": "Wayveyx"
   },
   "dependencies": {
-    "@discordjs/collection": "0.1.6",
-    "@discordjs/form-data": "3.0.1",
     "abort-controller": "3.0.0",
     "asynckit": "0.4.0",
     "axios": "0.20.0",
