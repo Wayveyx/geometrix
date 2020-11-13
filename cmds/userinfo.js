@@ -3,7 +3,7 @@ const axios = require("axios");
 
 exports.run = async (bot, message, args, gjp, url) => {
     if (args[0] == undefined) return message.channel.send("Please provide a user.");
-    let msg = await message.channel.send(new Discord.MessageEmbed()
+    let msg = await message.channel.send(new Discord.RichEmbed()
         .setTitle("Getting user info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
@@ -11,12 +11,12 @@ exports.run = async (bot, message, args, gjp, url) => {
         axios.post(`${url}/getGJUserInfo20.php`, `gameVersion=20&binaryVersion=29&accountID=30&gjp=${gjp}&targetAccountID=${args[0]}&secret=Wmfd2893gb7`)
             .then(function (res) {
                 //console.log(res);
-                if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
+                if (res.data == "-1") return msg.edit(new Discord.RichEmbed()
                     .setTitle("Error")
                     .setColor("#FF1800")
                     .setDescription(`There is no user with ID ${args[0]}.`));
                 let args2 = res.data.split(":");
-                msg.edit(new Discord.MessageEmbed()
+                msg.edit(new Discord.RichEmbed()
                     .setTitle("User Information")
                     .setDescription(`Username: ${args2[1]}\nID: ${args2[3]}`)
                     .setColor("#01FF56")
@@ -27,12 +27,12 @@ exports.run = async (bot, message, args, gjp, url) => {
         axios.post(`${url}/getGJUsers20.php`, `gameVersion=20&binaryVersion=29&str=${args[0]}&total=${gjp}&page=0&secret=Wmfd2893gb7`)
             .then(function (res) {                                                                   //LOL i used total for this so it would know the requester is the bot, and yes i modified the file.
                 //console.log(res);
-                if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
+                if (res.data == "-1") return msg.edit(new Discord.RichEmbed()
                     .setTitle("Error")
                     .setColor("#FF1800")
                     .setDescription(`There is no user with the username ${args[0]}.`));
                 let args2 = res.data.replace("#", ":").split(":");
-                msg.edit(new Discord.MessageEmbed()
+                msg.edit(new Discord.RichEmbed()
                     .setTitle("User Information")
                     .setDescription(`Username: ${args2[1]}\nID: ${args2[3]}`)
                     .setColor("#01FF56")
