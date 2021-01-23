@@ -13,7 +13,7 @@ exports.run = async (bot, message, args, url) => {
                 if (res.data != "1") return msg.edit(new Discord.MessageEmbed()
                         .setTitle("Error")
                         .setColor("#FF1800")
-                        .setDescription(`Send a message to Geometrix (in-game) with your code as the subject and try again.`));
+                        .setDescription(`Send a message to Geometrix (in-game) with your code as the subject and try again.\n Error data: \`${res.data}\``));
                 msg.edit(new Discord.MessageEmbed()
                     .setTitle("Linked!")
                     .setColor("#01FF56")
