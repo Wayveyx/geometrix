@@ -8,7 +8,7 @@ exports.run = async (bot, message, args, gjp, url) => {
         .setDescription("This might take a moment."));
     if (user == undefined || message.mentions.users.first()) {
         let member = message.mentions.users.first() || message.author;
-        let test = await axios.post(`${url}/bot/link.php`, `type=3&userID=${message.author.id}`)
+        let test = await axios.post(`${url}/bot/link.php`, `type=3&userID=${member.id}`)
             .then(function (res) {
                 if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
                     .setTitle("Error")
