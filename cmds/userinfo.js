@@ -6,7 +6,8 @@ exports.run = async (bot, message, args, gjp, url) => {
         .setTitle("Getting user info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
-        if (args[0] == undefined) {
+    if (user == undefined || message.mentions.users.first()) {
+        let member = message.mentions.users.first() || message.author;
         let test = await axios.post(`${url}/bot/link.php`, `type=3&userID=${message.author.id}`)
             .then(function (res) {
                 if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
