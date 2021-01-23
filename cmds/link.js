@@ -8,7 +8,7 @@ exports.run = async (bot, message, args, url) => {
             .setTitle("Linking...")
             .setColor("#FFA500")
             .setDescription("This might take a moment."));
-        axios.post(`${url}/bot/link.php`, `type=2&userID=${message.author.id}&code=${args[0]}`)
+        axios.post(`${process.env.URL}/bot/link.php`, `type=2&userID=${message.author.id}&code=${args[0]}`)
             .then(function (res) {
                 if (res.data != "1") return msg.edit(new Discord.MessageEmbed()
                         .setTitle("Error")
@@ -25,7 +25,7 @@ exports.run = async (bot, message, args, url) => {
             .setTitle("Getting code...")
             .setColor("#FFA500")
             .setDescription("This might take a moment."));
-        axios.post(`${url}/bot/link.php`, `type=1&userID=${message.author.id}`)
+        axios.post(`${process.env.URL}/bot/link.php`, `type=1&userID=${message.author.id}`)
             .then(function (res) {
                 if (res.data.length != 7) {
                     msg.edit(new Discord.MessageEmbed()
