@@ -2,11 +2,20 @@ const Discord = require("discord.js");
 const axios = require("axios");
 
 exports.run = async (bot, message, args, gjp, url) => {
-    if (args[0] == undefined) return message.channel.send("Please provide a user.");
     let msg = await message.channel.send(new Discord.MessageEmbed()
         .setTitle("Getting user info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
+        if (args[0] == undefined) {
+        let test = await axios.post(`${url}/bot/link.php`, `type=3&userID=${message.author.id}`)
+            .then(function (res) {
+                if (res.data == "-1") return msg.edit(new Discord.MessageEmbed()
+                    .setTitle("Error")
+                    .setColor("#FF1800")
+                    .setDescription(`Please specify a user id.`));
+                args[0] = parseInt(res.data);
+            });
+    }
     if (!isNaN(args[0])) {
         axios.post(`${url}/getGJUserInfo20.php`, `gameVersion=20&binaryVersion=29&accountID=30&gjp=${gjp}&targetAccountID=${args[0]}&secret=Wmfd2893gb7`)
             .then(function (res) {
