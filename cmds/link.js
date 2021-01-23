@@ -2,13 +2,13 @@ const Discord = require("discord.js");
 const axios = require("axios");
 const base64 = require("base-64");
 
-exports.run = async (bot, message, args, settings) => {
+exports.run = async (bot, message, args, url) => {
     if (args[0] !== undefined) {
         let msg = await message.channel.send(new Discord.MessageEmbed()
             .setTitle("Linking...")
             .setColor("#FFA500")
             .setDescription("This might take a moment."));
-        axios.post(`${process.env.URL}/bot/link.php`, `type=2&userID=${message.author.id}&code=${args[0]}`)
+        axios.post(`${url}/bot/link.php`, `type=2&userID=${message.author.id}&code=${args[0]}`)
             .then(function (res) {
                 if (res.data != "1") return msg.edit(new Discord.MessageEmbed()
                         .setTitle("Error")
@@ -25,7 +25,7 @@ exports.run = async (bot, message, args, settings) => {
             .setTitle("Getting code...")
             .setColor("#FFA500")
             .setDescription("This might take a moment."));
-        axios.post(`${process.env.URL}/bot/link.php`, `type=1&userID=${message.author.id}`)
+        axios.post(`${url}/bot/link.php`, `type=1&userID=${message.author.id}`)
             .then(function (res) {
                 if (res.data.length != 7) {
                     msg.edit(new Discord.MessageEmbed()
