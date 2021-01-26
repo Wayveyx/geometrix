@@ -9,6 +9,21 @@ exports.run = async (bot, message, args, settings) => {
     let rpages = [];
     let pages;
     let desc = "";
+    let emoji;
+    switch (type) {
+        case "stars":
+            emoji = "<:star:803463350268854292>";
+            break;
+        case "demons":
+            emoji = " <:demon:803463421076832296>";
+            break;
+        case "coins":
+            emoji = " <:coin:803463518954192926>";
+            break;
+        case "usercoins":
+            emoji = " <:usercoin:803463575133618206>";
+            break;
+    }
     let getInfo = await axios.post(`${process.env.URL}/bot/lbs.php`, `type=${type}`)
         .then(async function (res) {
             //console.log(res.data);
@@ -21,7 +36,7 @@ exports.run = async (bot, message, args, settings) => {
                 while (user < userList.length) {
                     placement++;
                     userInfo = userList[user].split("|");
-                    desc += "**" + placement + ".** " + userInfo[1] + " (<@" + userInfo[0] + ">) - **" + userInfo[2] + "**\n";
+                    desc += "**" + placement + ".** " + userInfo[1] + " (<@" + userInfo[0] + ">) - **" + userInfo[2] + emoji + "**\n";
                     user++;
                 }
                 rpages.push(desc);
