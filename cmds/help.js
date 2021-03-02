@@ -16,6 +16,7 @@ exports.run = async (bot, message, args) => {
     } else getCmds();
     async function getCmds() {
         let getCmds = await fs.readdir('./cmds/', function (err, files) {
+            if(err) throw err;
             for (i = 0; i < files.length; i++) {
                 let file = files[i].split(".")[0];
                 let cmd = bot.commands.get(file);
