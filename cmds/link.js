@@ -41,3 +41,10 @@ exports.run = async (bot, message, args, url) => {
     }
 
 }
+exports.help = {
+    name: "link",
+    description: "Link your account to your discord.",
+    usage: "**g!link** (Code)",
+    example: "**g!link**\n**g!link** gHiJ!1k",
+    aliases: []
+}
