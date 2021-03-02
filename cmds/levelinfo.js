@@ -233,3 +233,10 @@ function robtopSong(id) { //moved this because string search
     let songArgs = [song, songname, songauthor, null];
     return songArgs;
 }
+exports.help = {
+    name: "levelinfo",
+    description: "Get information on a level.",
+    usage: "**g!levelinfo** (Level)",
+    example: "**g!levelinfo** GeNeRiC\n**g!levelinfo** 37",
+    aliases: []
+}
