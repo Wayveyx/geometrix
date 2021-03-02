@@ -75,3 +75,10 @@ exports.run = async (bot, message, args, settings) => {
         });
     });
 }
+exports.help = {
+    name: "leaderboard",
+    description: "Leaderboard for linked users.",
+    usage: "**g!leaderboard** (Stars, Demons, Coins, Usercoins)",
+    example: "**g!leaderboard** stars",
+    aliases: []
+}
