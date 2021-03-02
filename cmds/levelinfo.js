@@ -8,7 +8,7 @@ exports.run = async (bot, message, args, settings) => {
         .setTitle("Getting level info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
-    axios.post(`${settings.url}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args[0]}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
+    axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args[0]}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
         .then(function (res) {
             //console.log(res.data);
             if (isNaN(args[0])) {
