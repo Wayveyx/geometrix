@@ -127,7 +127,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                 song = songInf[0];
                 songname = songInf[1];
                 songauthor = songInf[2];
-                songurl = songIng[3];
+                songurl = songInf[3];
             }
             let copyable = null;
             if (!args2[55] == "0") {
