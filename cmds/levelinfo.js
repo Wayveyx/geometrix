@@ -11,7 +11,7 @@ exports.run = async (bot, message, args, gjp, url) => {
     axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args.join(" ")}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
         .then(function (res) {
             //console.log(res.data);
-            if (!parseInt(args[0])) {
+            if (args.length > 1 || !parseInt(args[0])) {
                 let args4 = res.data.split("#"); //split level, player, and song info
                 if (args4.includes("-1")) return msg.edit(new Discord.MessageEmbed()
                 .setTitle("Error")
