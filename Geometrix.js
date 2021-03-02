@@ -1,10 +1,17 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 let pfx = "G!";
+bot.commands = new Discord.Collection();
 
 bot.on("ready", () => {
     bot.user.setActivity("Geometrix | g!help");
     console.log("New Best! 98%");
+    const cmds = fs.readdirSync('./cmds/').filter(file => file.endsWith('.js'))
+    for (const cmd of cmds) {
+        const command = require(`./cmds/${cmd}`);
+        bot.commands.set(command.help.name, command);
+        console.log(`${command.help.name} added.`);
+    }
 });
 
 bot.on("message", message => {
@@ -15,9 +22,8 @@ bot.on("message", message => {
     let cmd = args.shift().toLowerCase();
     if (message.author.bot) return;
     if (!msg.startsWith(pfx)) return;
-    try {
-        let cmdFile = require(`./cmds/${cmd}.js`);
-        cmdFile.run(bot, message, args, gjp, url);
+    try {     
+        bot.commands.get(cmd).run(bot, message, args, gjp, url);
     } catch (e) {
         console.log(e.message);
     }
