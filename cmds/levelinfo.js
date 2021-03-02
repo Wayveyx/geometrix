@@ -16,7 +16,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                 if (args4.includes("-1")) return msg.edit(new Discord.MessageEmbed()
                 .setTitle("Error")
                 .setColor("#FF1800")
-                .setDescription(`There is no level called ${args[0]}.`));
+                .setDescription(`There is no level called ${args.join(" ")}.`));
                 let args6 = args4[0].split("|"); //split levels apart
                 let args5 = args4[1].split("|"); //split players apart, and yes its out of order fuck off lol
                 let cpage = 0;
