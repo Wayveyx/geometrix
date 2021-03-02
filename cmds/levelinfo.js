@@ -3,16 +3,20 @@ const axios = require("axios");
 const base64 = require("base-64");
 
 exports.run = async (bot, message, args, gjp, url) => {
-    if (args[0] == undefined) return message.channel.send("Please provide a level ID.");
+    if (args[0] == undefined) return message.channel.send("Please provide a level.");
     let msg = await message.channel.send(new Discord.MessageEmbed()
         .setTitle("Getting level info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
-    axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args[0]}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
+    axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args.join(" ")}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
         .then(function (res) {
             //console.log(res.data);
-            if (isNaN(args[0])) {
+            if (!parseInt(args[0])) {
                 let args4 = res.data.split("#"); //split level, player, and song info
+                if (args4.includes("-1")) return msg.edit(new Discord.MessageEmbed()
+                .setTitle("Error")
+                .setColor("#FF1800")
+                .setDescription(`There is no level called ${args[0]}.`));
                 let args6 = args4[0].split("|"); //split levels apart
                 let args5 = args4[1].split("|"); //split players apart, and yes its out of order fuck off lol
                 let cpage = 0;
@@ -218,7 +222,7 @@ function robtopSong(id) { //moved this because string search
             songauthor = "DJ-Nate";
             break;
         case '18':
-            songname = "Geometrical Denominator";
+            songname = "Geometrical Dominator";
             songauthor = "Waterflame";
             break;
         case '19':
