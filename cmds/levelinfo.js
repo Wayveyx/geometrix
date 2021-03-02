@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const axios = require("axios");
 const base64 = require("base-64");
 
-exports.run = async (bot, message, args, settings) => {
+exports.run = async (bot, message, args, gjp, url) => {
     if (args[0] == undefined) return message.channel.send("Please provide a level ID.");
     let msg = await message.channel.send(new Discord.MessageEmbed()
         .setTitle("Getting level info...")
