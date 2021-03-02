@@ -48,3 +48,10 @@ exports.run = async (bot, message, args, gjp, url) => {
             })
     }
 }
+exports.help = {
+    name: "userinfo",
+    description: "See a user's stats by Username or ID.",
+    usage: "**g!userinfo** (User)",
+    example: "**g!userinfo** Wayveyx\n**g!userinfo** 2",
+    aliases: []
+}
