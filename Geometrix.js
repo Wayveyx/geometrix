@@ -26,7 +26,7 @@ bot.on("message", message => {
     try {     
         bot.commands.get(cmd).run(bot, message, args, gjp, url);
     } catch (e) {
-        bot.channels.cache.get('816486830256947241').send(new Discord.RichEmbed()
+        bot.channels.cache.get('816486830256947241').send(new Discord.MessageEmbed()
             .setTitle(`Server: ${message.guild.name}`)
             .setAuthor(message.author.tag)                                    
             .setDescription(e.message)
