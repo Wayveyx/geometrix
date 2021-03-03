@@ -148,7 +148,7 @@ exports.run = async (bot, message, args, gjp, url) => {
         bot.channels.cache.get('816486830256947241').send(new Discord.MessageEmbed()
             .setTitle(`Server: ${message.guild.name}`)
             .setAuthor(message.author.tag)                                    
-            .setDescription(e.message)
+            .setDescription(err.message)
             .addField(`Cause`, message.content)
             .setColor([255, 0, 0])); //probably will only be triggered by voxalice   
     }
@@ -160,7 +160,7 @@ exports.run = async (bot, message, args, gjp, url) => {
             bot.channels.cache.get('816486830256947241').send(new Discord.MessageEmbed()
                 .setTitle(`Server: ${message.guild.name}`)
                 .setAuthor(message.author.tag)                                    
-                .setDescription(e.message)
+                .setDescription(err.message)
                 .addField(`Cause`, message.content)
                 .setColor([255, 0, 0])); //probably will only be triggered by voxalice 
             return base;
