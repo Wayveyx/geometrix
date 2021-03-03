@@ -154,7 +154,7 @@ exports.run = async (bot, message, args, gjp, url) => {
     }
     function b64(base) {
         try {
-            let decode = base64.decode(base.replace(/fnx-/g, 'fnx+');
+            let decode = base64.decode(base.replace(/fnx-/g, 'fnx+'));
             return decode;
         } catch (err) {
             bot.channels.cache.get('816486830256947241').send(new Discord.MessageEmbed()
