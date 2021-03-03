@@ -49,7 +49,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                     let gotLvls = new Discord.MessageEmbed()
                         .setTitle(args7[3])
                         .setColor("#01FF56")
-                        .setDescription(`${base64.decode(args7[35])}`)
+                        .setDescription(`${b64(args7[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
                         .addField("ID", args7[1])
                         .addField("Created By", args8[1])
                         .addField("Downloads", args7[13])
@@ -77,7 +77,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                             gotLvls = new Discord.MessageEmbed()
                                 .setTitle(args7[3])
                                 .setColor("#01FF56")
-                                .setDescription(`${base64.decode(args7[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
+                                .setDescription(`${b64(args7[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
                                 .addField("ID", args7[1])
                                 .addField("Created By", args8[1])
                                 .addField("Downloads", args7[13])
@@ -100,7 +100,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                             gotLvls = new Discord.MessageEmbed()
                                 .setTitle(args7[3])
                                 .setColor("#01FF56")
-                                .setDescription(`${base64.decode(args7[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
+                                .setDescription(`${b64(args7[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
                                 .addField("ID", args7[1])
                                 .addField("Created By", args8[1])
                                 .addField("Downloads", args7[13])
@@ -137,7 +137,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                 msg.edit(new Discord.MessageEmbed()
                     .setTitle(args2[3])
                     .setColor("#01FF56")
-                    .setDescription(`${base64.decode(args2[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
+                    .setDescription(`${b64(args2[35])} ${copyable ? "\n\nPass: ||" + copyable + "||" : ""}`)
                     .addField("ID", args[0])
                     .addField("Created By", args2[58])
                     .addField("Downloads", args2[13])
@@ -234,6 +234,14 @@ function robtopSong(id) { //moved this because string search
     }
     let songArgs = [song, songname, songauthor, null];
     return songArgs;
+}
+function b64(base) {
+    try {
+        let decode = base64.decode(base);
+        return decode;
+    } catch (err) {
+        bot.channels.cache.get('776879580631269417').send(`${message.author} caused ${err.message} with ${args.join(" ")}`); //probably will only be triggered by voxalice   
+    }
 }
 exports.help = {
     name: "levelinfo",
