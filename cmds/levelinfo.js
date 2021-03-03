@@ -145,7 +145,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                     .addField("Song", `ID: ${song}\nName: ${songname}\nAuthor: ${songauthor}\n${songurl ? songurl : "Download Unavailable"}`));
             });
     } catch (err) {
-        bot.channels.cache.get('816486830256947241').send(new Discord.RichEmbed()
+        bot.channels.cache.get('816486830256947241').send(new Discord.MessageEmbed()
             .setTitle(`Server: ${message.guild.name}`)
             .setAuthor(message.author.tag)                                    
             .setDescription(e.message)
@@ -157,7 +157,7 @@ exports.run = async (bot, message, args, gjp, url) => {
             let decode = base64.decode(base);
             return decode;
         } catch (err) {
-            bot.channels.cache.get('816486830256947241').send(new Discord.RichEmbed()
+            bot.channels.cache.get('816486830256947241').send(new Discord.MessageEmbed()
                 .setTitle(`Server: ${message.guild.name}`)
                 .setAuthor(message.author.tag)                                    
                 .setDescription(e.message)
