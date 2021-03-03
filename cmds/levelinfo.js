@@ -147,6 +147,14 @@ exports.run = async (bot, message, args, gjp, url) => {
     } catch (err) {
         bot.channels.cache.get('776879580631269417').send(`${message.author} has sent ${message.content} and caused ${err.message}`); //probably will only be triggered by voxalice   
     }
+    function b64(base) {
+        try {
+            let decode = base64.decode(base);
+            return decode;
+        } catch (err) {
+            bot.channels.cache.get('776879580631269417').send(`${message.author} caused ${err.message} with ${args.join(" ")}`); //probably will only be triggered by voxalice   
+        }
+    }
 }
 function robtopSong(id) { //moved this because string search
     song = id + " (Main)";
@@ -234,14 +242,6 @@ function robtopSong(id) { //moved this because string search
     }
     let songArgs = [song, songname, songauthor, null];
     return songArgs;
-}
-function b64(base) {
-    try {
-        let decode = base64.decode(base);
-        return decode;
-    } catch (err) {
-        bot.channels.cache.get('776879580631269417').send(`${message.author} caused ${err.message} with ${args.join(" ")}`); //probably will only be triggered by voxalice   
-    }
 }
 exports.help = {
     name: "levelinfo",
