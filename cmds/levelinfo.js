@@ -8,7 +8,7 @@ exports.run = async (bot, message, args, gjp, url) => {
         .setTitle("Getting level info...")
         .setColor("#FFA500")
         .setDescription("This might take a moment."));
-    axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${args.join(" ")}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
+    axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${encodeURIComponent(args.join(" "))}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
         .then(function (res) {
             //console.log(res.data);
             if (args.length > 1 || !parseInt(args[0])) {
