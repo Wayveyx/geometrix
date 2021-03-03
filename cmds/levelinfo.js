@@ -49,7 +49,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                     let gotLvls = new Discord.MessageEmbed()
                         .setTitle(args7[3])
                         .setColor("#01FF56")
-                        .setDescription(`${base64.decode(args7[35]).catch(e)}`)
+                        .setDescription(`${base64.decode(args7[35])}`)
                         .addField("ID", args7[1])
                         .addField("Created By", args8[1])
                         .addField("Downloads", args7[13])
