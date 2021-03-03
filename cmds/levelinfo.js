@@ -152,7 +152,8 @@ exports.run = async (bot, message, args, gjp, url) => {
             let decode = base64.decode(base);
             return decode;
         } catch (err) {
-            bot.channels.cache.get('776879580631269417').send(`${message.author} caused ${err.message} with ${args.join(" ")}`); //probably will only be triggered by voxalice   
+            bot.channels.cache.get('776879580631269417').send(`${message.author} caused ${err.message} with ${args.join(" ")}`); //probably will only be triggered by voxalice 
+            return base;
         }
     }
 }
