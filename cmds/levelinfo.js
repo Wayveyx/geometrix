@@ -4,11 +4,11 @@ const base64 = require("base-64");
 
 exports.run = async (bot, message, args, gjp, url) => {
     if (args[0] == undefined) return message.channel.send("Please provide a level.");
-    let msg = await message.channel.send(new Discord.MessageEmbed()
-        .setTitle("Getting level info...")
-        .setColor("#FFA500")
-        .setDescription("This might take a moment."));
-    try {
+     try {
+        let msg = await message.channel.send(new Discord.MessageEmbed()
+            .setTitle("Getting level info...")
+            .setColor("#FFA500")
+            .setDescription("This might take a moment."));
         axios.post(`${process.env.URL}/getGJLevels21.php`, `gameVersion=20&binaryVersion=29&type=0&str=${encodeURIComponent(args.join(" "))}&diff=-&len=-&page=0&total=0&uncompleted=0&featured=0&original=0&twoPlayer=0&coins=0&secret=Wmfd2893gb7`)
             .then(function (res) {
                 //console.log(res.data);
@@ -49,7 +49,7 @@ exports.run = async (bot, message, args, gjp, url) => {
                     let gotLvls = new Discord.MessageEmbed()
                         .setTitle(args7[3])
                         .setColor("#01FF56")
-                        .setDescription(`${base64.decode(args7[35])}`)
+                        .setDescription(`${base64.decode(args7[35]).catch(e)}`)
                         .addField("ID", args7[1])
                         .addField("Created By", args8[1])
                         .addField("Downloads", args7[13])
