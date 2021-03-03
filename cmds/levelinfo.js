@@ -145,14 +145,24 @@ exports.run = async (bot, message, args, gjp, url) => {
                     .addField("Song", `ID: ${song}\nName: ${songname}\nAuthor: ${songauthor}\n${songurl ? songurl : "Download Unavailable"}`));
             });
     } catch (err) {
-        bot.channels.cache.get('776879580631269417').send(`${message.author} has sent ${message.content} and caused ${err.message}`); //probably will only be triggered by voxalice   
+        bot.channels.get('816486830256947241').send(new Discord.RichEmbed()
+            .setTitle(`Server: ${message.guild.name}`)
+            .setAuthor(message.author.tag)                                    
+            .setDescription(e.message)
+            .addField(`Cause`, message.content)
+            .setColor([255, 0, 0])); //probably will only be triggered by voxalice   
     }
     function b64(base) {
         try {
             let decode = base64.decode(base);
             return decode;
         } catch (err) {
-            bot.channels.cache.get('776879580631269417').send(`${message.author.tag} caused \`${err.message}\` with ${message.content}`); //probably will only be triggered by voxalice 
+            bot.channels.get('816486830256947241').send(new Discord.RichEmbed()
+            .setTitle(`Server: ${message.guild.name}`)
+            .setAuthor(message.author.tag)                                    
+            .setDescription(e.message)
+            .addField(`Cause`, message.content)
+            .setColor([255, 0, 0])); //probably will only be triggered by voxalice 
             return base;
         }
     }
